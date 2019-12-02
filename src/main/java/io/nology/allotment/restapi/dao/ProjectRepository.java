@@ -1,7 +1,6 @@
 package io.nology.allotment.restapi.dao;
 
 import io.nology.allotment.restapi.entity.Project;
-import io.nology.allotment.restapi.service.ProjectService;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -22,7 +21,7 @@ public class ProjectRepository implements ProjectDAO {
     public List<Project> findAll(){
         return entityManager
                 .unwrap(Session.class)
-                .createQuery("from projects", Project.class)
+                .createQuery("from Project ", Project.class)
                 .list();
     }
 }
