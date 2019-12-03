@@ -29,7 +29,6 @@ public class ProjectController {
         List<Project> projects = theProjectService.findAll();
         return ResponseEntity.status(HttpStatus.OK).body(projects);
     }
-    
 
     // SHOW ROUTE
     @GetMapping("/projects/{projectId}")
@@ -37,5 +36,13 @@ public class ProjectController {
         Project theProject = theProjectService.findById(projectId);
         if (theProject == null) throw new ResourceNotFoundException("Project not found with id: " +projectId);
         return ResponseEntity.status(HttpStatus.OK).body(theProject);
+    }
+
+    // SHOW ROUTE
+    @GetMapping("/projects/find/{searchTerm}")
+    public ResponseEntity<List<Project>> searchProjects(@PathVariable String searchTerm) {
+        List<Project> theProjects = theProjectService.searchProjects(searchTerm);
+        if (theProjects == null) throw new ResourceNotFoundException("No projects found matching search term: " +searchTerm);
+        return ResponseEntity.status(HttpStatus.OK).body(theProjects);
     }
 }

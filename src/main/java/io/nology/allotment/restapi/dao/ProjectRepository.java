@@ -31,4 +31,12 @@ public class ProjectRepository implements ProjectDAO {
                 .unwrap(Session.class)
                 .find(Project.class, projectId);
     }
+
+    @Override
+    public List<Project> searchProjects(String searchTerm){
+        return entityManager
+                .unwrap(Session.class)
+                .createQuery("from Project where name LIKE '%" + searchTerm + "%'", Project.class)
+                .list();
+    }
 }

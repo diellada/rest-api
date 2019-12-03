@@ -28,4 +28,8 @@ public class ProjectServiceImpl implements ProjectService{
     public Project findById(int projectId) {
         return theProjectDAO.findById(projectId);
     };
+
+    @Override
+    @Transactional
+    public List<Project> searchProjects(String searchTerm) { return theProjectDAO.searchProjects(searchTerm);}
 }
