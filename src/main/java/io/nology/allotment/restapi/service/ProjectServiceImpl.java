@@ -22,4 +22,10 @@ public class ProjectServiceImpl implements ProjectService{
     public List<Project> findAll(){
         return theProjectDAO.findAll();
     }
+
+    @Override
+    @Transactional
+    public Project findById(int projectId) {
+        return theProjectDAO.findById(projectId);
+    };
 }

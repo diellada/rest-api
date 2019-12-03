@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface ProjectService {
     public List<Project> findAll();
+    public Project findById(int projectId);
 }

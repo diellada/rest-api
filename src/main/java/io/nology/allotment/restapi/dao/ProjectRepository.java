@@ -24,4 +24,11 @@ public class ProjectRepository implements ProjectDAO {
                 .createQuery("from Project ", Project.class)
                 .list();
     }
+
+    @Override
+    public Project findById(int projectId) {
+        return entityManager
+                .unwrap(Session.class)
+                .find(Project.class, projectId);
+    }
 }
