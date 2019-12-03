@@ -27,5 +27,6 @@ public class ProjectController {
         List<Project> projects = theProjectService.findAll();
         return ResponseEntity.status(HttpStatus.OK).body(projects);
     }
+    
 
 }
